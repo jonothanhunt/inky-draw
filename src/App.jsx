@@ -7,9 +7,10 @@ function App()
 
   useEffect(() =>
   {
-    fetch('/time').then(res => res.json()).then(data =>
+    fetch('/api/test').then(res => res.json()).then(data =>
     {
       setCurrentTime(data.time);
+      console.log(data.time)
     });
   }, []);
 
