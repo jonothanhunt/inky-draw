@@ -11,7 +11,7 @@
 }
 
 .header-info {
-    width: 70vw;
+    width: Calc(70 * var(--adjusted-size));
     text-align: left;
     margin-bottom: 20px;
 }
@@ -19,7 +19,7 @@
 /* controls */
 .controls {
     height: 60px;
-    width: 70vw;
+    width: Calc(70 * var(--adjusted-size));
 
     padding: 20px;
 
@@ -138,13 +138,13 @@ input[type="radio"]:checked {
 
 /* hat and canvas */
 .hat {
-    padding: 0.8vw 3vw 0.8vw 3vw;
+    padding: Calc(0.8 * var(--adjusted-size)) Calc(3 * var(--adjusted-size));
     background-color: var(--primary-color);
-    width: 70vw;
-    border-radius: 3vw;
+    width: Calc(70 * var(--adjusted-size));
+    border-radius: Calc(3 * var(--adjusted-size));
 
     box-shadow:
-        0 1vw 0 0 var(--primary-light-color),
+        Calc(0 1 * var(--adjusted-size)) 0 0 var(--primary-light-color),
         1px 33px 62px 0px rgba(0, 0, 0, 0.5);
 
     position: relative;
@@ -154,13 +154,13 @@ input[type="radio"]:checked {
     content: '';
 
     position: absolute;
-    top: 1vw;
-    left: 0.5vw;
-    width: 100vw;
-    height: 70vw;
+    top: Calc(1 * var(--adjusted-size));
+    left: Calc(0.5 * var(--adjusted-size));
+    width: Calc(100 * var(--adjusted-size));
+    height: Calc(70 * var(--adjusted-size));
 
     background-image: url('/images/raspberry-pi-4-model-b.svg');
-    background-size: 102vw auto;
+    background-size: Calc(102 * var(--adjusted-size)) auto;
 
     opacity: 0.5;
 
@@ -168,13 +168,16 @@ input[type="radio"]:checked {
 }
 
 .hat-inner {
-    /* border-right: 7vw solid #EDE6E4;
-    outline: 1vw solid #EDE6E4; */
+    /* border-rightCalc(: 7 * var(--adjusted-size)) solid #EDE6E4;
+    outlineCalc(: 1 * var(--adjusted-size)) solid #EDE6E4; */
 
-    padding: 1vw 7vw 1vw 1vw;
+    padding-top: Calc(1 * var(--adjusted-size));
+    padding-right: Calc(7 * var(--adjusted-size));
+    padding-bottom: Calc(1 * var(--adjusted-size));
+    padding-left: Calc(1 * var(--adjusted-size));
 
     background-color: var(--secondary-light-color);
-    border-radius: 0.1vw;
+    border-radius: Calc(0.1 * var(--adjusted-size));
 
     position: relative;
 }
@@ -187,8 +190,8 @@ input[type="radio"]:checked {
     right: 0;
 
     background: linear-gradient(to right, transparent 70%, var(--secondary-light-color) 80%, transparent 100%);
-    background-size: 200vw, 100vw;
-    background-position-x: -200vw;
+    background-size: Calc(200 * var(--adjusted-size)), Calc(100 * var(--adjusted-size));
+    background-position-x: -Calc(200 * var(--adjusted-size));
 
     animation-duration: 4s;
     animation-fill-mode: forwards;
@@ -205,18 +208,18 @@ input[type="radio"]:checked {
 
 @keyframes refreshing {
     0% {
-        background-position-x: -200vw
+        background-position-x: Calc(-200 * var(--adjusted-size))
     }
 
     100% {
-        background-position-x: 200vw;
+        background-position-x: Calc(200 * var(--adjusted-size));
     }
 }
 
 .drawing-canvas {
     width: 100%;
     image-rendering: pixelated;
-    margin-bottom: -0.25vw;
+    margin-bottom: Calc(-0.25 * var(--adjusted-size));
 
     cursor: url("/images/pencil.svg") 3 20, auto !important;
 }

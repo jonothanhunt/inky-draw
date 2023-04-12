@@ -26,7 +26,7 @@ const Canvas = ({
 
     function onDraw(context, point, prevPoint)
     {
-        drawLine(prevPoint, point, context, colourTable[currentColor], 4)
+        drawLine(prevPoint, point, context, colourTable[currentColor], 5)
     }
 
     function drawLine(
@@ -112,7 +112,7 @@ const Canvas = ({
     return (
         <div className='hat-wrapper'>
             <div className='header-info'>
-                Detected InkyPhat: {specialColor}
+                Detected Inky pHAT: {specialColor}
             </div>
             <div className='controls'>
                 <button onClick={() => { clearCanvas() }} className='controls-button clear-button'>Clear</button>
