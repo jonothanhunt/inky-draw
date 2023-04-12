@@ -5,20 +5,20 @@ import { useOnDraw } from "./Hooks"
 
 const Canvas = ({
     width,
-    height
+    height,
+    specialColor
 }) =>
 {
     const canvasRef = useRef(null)
 
     // COLOUR
     const clearColour = '#E1D0C1'
-    const inkySpecialColour = 'yellow'
     const [currentColor, setCurrentColor] = useState('black')
 
     const colourTable = {
         clear: clearColour,
         black: '#000000',
-        special: inkySpecialColour === 'yellow' ? '#ffc400' : 'purple'
+        special: specialColor === 'yellow' ? '#ffc400' : specialColor === 'red' ? '#bb0000' : '#000000'
     }
 
 
@@ -26,7 +26,7 @@ const Canvas = ({
 
     function onDraw(context, point, prevPoint)
     {
-        drawLine(prevPoint, point, context, colourTable[currentColor], 2)
+        drawLine(prevPoint, point, context, colourTable[currentColor], 4)
     }
 
     function drawLine(
@@ -61,16 +61,61 @@ const Canvas = ({
     useEffect(() =>
     {
         clearCanvas()
-
     }, [])
+
+    const [refreshingAnimation, setRefreshingAnimation] = useState(false)
+
+    function sendToInky()
+    {
+        const imageData = canvasRef.current.toDataURL('image/png')
+
+        fetch('/api/inky/set', {
+            method: 'POST',
+            body: JSON.stringify({ imageData }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json()).then(data =>
+            {
+                setRefreshingAnimation(true)
+                setTimeout(function ()
+                {
+                    setRefreshingAnimation(false)
+                }, 10000)
+            })
+            .catch(error =>
+            {
+                console.log(error)
+            })
+
+    }
+
+    function clearInky()
+    {
+        fetch('/api/inky/clear').then(res => res.json()).then(data =>
+        {
+            setRefreshingAnimation(true)
+            setTimeout(function ()
+            {
+                setRefreshingAnimation(false)
+            }, 10000)
+        })
+            .catch(error =>
+            {
+                console.log(error)
+            })
+
+    }
+
 
     return (
         <div className='hat-wrapper'>
             <div className='header-info'>
-                Detected InkyPhat: YELLOW
+                Detected InkyPhat: {specialColor}
             </div>
             <div className='controls'>
-                <button onClick={() => { clearCanvas() }} className='controls-button'>Clear</button>
+                <button onClick={() => { clearCanvas() }} className='controls-button clear-button'>Clear</button>
 
                 <div className='controls-palette'>
                     <label className="controls-palette-option">
@@ -81,10 +126,16 @@ const Canvas = ({
                         <input value="black" className="black" type="radio" name="radio-color" checked={currentColor === 'black'} onChange={() => { setCurrentColor('black') }} />
                     </label>
 
-                    <label className="controls-palette-option">
-                        <input value={inkySpecialColour} className={inkySpecialColour} type="radio" name="radio-color" checked={currentColor === 'special'} onChange={() => { setCurrentColor('special') }} />
-                    </label>
+                    {specialColor != 'black' &&
+                        <label className="controls-palette-option">
+                            <input value={specialColor} className={specialColor} type="radio" name="radio-color" checked={currentColor === 'special'} onChange={() => { setCurrentColor('special') }} />
+                        </label>
+                    }
                 </div>
+
+                <button onClick={() => { clearInky() }} className='controls-button clear-inky-button'>Clear Inky</button>
+
+                <button onClick={() => { sendToInky() }} className='controls-button send-button'>Send to Inky</button>
 
             </div>
             <div
@@ -103,6 +154,7 @@ const Canvas = ({
                         // ref={setCanvasRef}
                         ref={canvasRef}
                     />
+                    <div className={refreshingAnimation ? 'refreshing animating' : 'refreshing'}></div>
                 </div>
             </div>
         </div>
