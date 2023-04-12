@@ -1,4 +1,27 @@
+:root {
+  --pi-board-top: #74a892;
+  --pi-board-sides: #5e8876;
+
+  --primary-color: #271300;
+  --primary-light-color: #472300;
+  --secondary-color: #E1D0C1;
+  --secondary-light-color: #EDE6E4;
+
+  --color-1: #c7522a;
+  --color-2: #e5c185;
+  --color-3: #74a892;
+  --color-3-dark: #4e7062;
+  --color-4: #008585;
+
+}
+
+/*  #c7522a,  #e5c185,  #E1D0C1,  #74a892 and  #008585. */
+
 body {
   margin: 0;
   padding: 0;
+
+  background-color: var(--secondary-color);
+
+  font-family: Menlo, Consolas, "Ubuntu Mono", "Roboto Mono", "DejaVu Sans Mono", monospace;
 }

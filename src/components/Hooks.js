@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-export function useOnDraw(onDraw)
+export function useOnDraw(onDraw, canvasRef)
 {
-    const canvasRef = useRef(null)
+    // const canvasRef = useRef(null)
     const prevPointRef = useRef(null)
     const isDrawingRef = useRef(false)
 
@@ -18,6 +18,7 @@ export function useOnDraw(onDraw)
                 if (isDrawingRef.current)
                 {
                     const point = computePointInCanvas(e.clientX, e.clientY)
+                    // const context = canvasRef.current.getContext('2d')
                     const context = canvasRef.current.getContext('2d')
                     if (onDraw) { onDraw(context, point, prevPointRef.current) }
                     prevPointRef.current = point;
@@ -91,10 +92,10 @@ export function useOnDraw(onDraw)
         }
     }, [onDraw])
 
-    function setCanvasRef(ref)
-    {
-        canvasRef.current = ref
-    }
+    // function setCanvasRef(ref)
+    // {
+    //     canvasRef.current = ref
+    // }
 
     function onMouseDown()
     {
@@ -102,7 +103,7 @@ export function useOnDraw(onDraw)
     }
 
     return {
-        setCanvasRef,
+        // setCanvasRef,
         onMouseDown
     }
 }
