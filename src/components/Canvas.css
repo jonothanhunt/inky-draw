@@ -155,16 +155,14 @@ input[type="radio"]:checked {
 
     position: absolute;
     top: 1vw;
-    left: 0;
+    left: 0.5vw;
     width: 100vw;
     height: 70vw;
 
-    border-radius: 3vw;
+    background-image: url('/images/raspberry-pi-4-model-b.svg');
+    background-size: 102vw auto;
 
-    background-color: var(--pi-board-top);
-
-    box-shadow:
-        0 1vw 0 0 var(--pi-board-sides);
+    opacity: 0.5;
 
     z-index: -2;
 }
