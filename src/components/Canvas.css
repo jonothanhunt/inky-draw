@@ -1,4 +1,4 @@
-.hat-wrapper {
+.wrapper {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -7,19 +7,28 @@
     justify-content: center;
     align-items: center;
 
+    text-align: center;
+
     flex-direction: column;
 }
 
+.title {
+    font-size: 3em;
+}
+
 .header-info {
-    width: Calc(70 * var(--adjusted-size));
-    text-align: left;
     margin-bottom: 20px;
+    max-width: 400px;
+    height: 80px;
 }
 
 /* controls */
 .controls {
-    height: 60px;
+    box-sizing: border-box;
+    /* height: 60px; */
     width: Calc(70 * var(--adjusted-size));
+
+    min-height: 100px;
 
     padding: 20px;
 
@@ -27,13 +36,20 @@
 
     background-color: #ececec;
 
-    margin-bottom: 20px;
+    margin: 30px 0 20px 0;
 
     display: flex;
     gap: 20px;
+    flex-basis: auto;
+    overflow-x: scroll;
+
+    z-index: 2;
 }
 
 .controls-button {
+    flex: 1 1 auto;
+    max-height: 60px;
+    min-width: 10em;
     border-radius: 10px;
     border: none;
     height: 100%;
@@ -71,6 +87,7 @@
 /* palette */
 
 .controls-palette {
+    flex: 1 1 auto;
     /* height: 100%; */
     background-color: white;
     border-radius: 10px;
@@ -112,6 +129,82 @@ input[type="radio"]:checked {
     transform: scale(1.2);
 }
 
+
+.controls-brush {
+    background-color: white;
+    border-radius: 10px;
+
+    padding: 10px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.controls-brush-size-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    min-width: 60px;
+    height: 10px;
+    background-color: var(--secondary-color);
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border-radius: 5px;
+
+    margin: 0 30px;
+
+    position: relative;
+}
+
+.controls-brush-size-slider::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    left: -30px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+}
+
+.controls-brush-size-slider::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: -7px;
+    right: -36px;
+    border-radius: 30px;
+    background-color: var(--primary-color);
+}
+
+.controls-brush-size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.controls-brush-size-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.controls-brush-size-slider:hover {
+    opacity: 1;
+}
+
+
+
 .clear {
     color: var(--secondary-color);
     background: var(--secondary-color);
@@ -137,6 +230,10 @@ input[type="radio"]:checked {
 }
 
 /* hat and canvas */
+.hat-wrapper {
+    position: relative;
+}
+
 .hat {
     padding: Calc(0.8 * var(--adjusted-size)) Calc(3 * var(--adjusted-size));
     background-color: var(--primary-color);
@@ -144,42 +241,55 @@ input[type="radio"]:checked {
     border-radius: Calc(3 * var(--adjusted-size));
 
     box-shadow:
-        Calc(0 1 * var(--adjusted-size)) 0 0 var(--primary-light-color),
-        1px 33px 62px 0px rgba(0, 0, 0, 0.5);
+        0 Calc(1 * var(--adjusted-size)) 0 0 var(--primary-light-color),
+        1px 33px 62px 0px rgba(0, 0, 0, 0.3);
 
     position: relative;
+
+    animation-duration: 1.4s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-name: entrance;
+    animation-timing-function: cubic-bezier(1.000, 0.010, 0.305, 1.045);
+
+    z-index: 3;
 }
 
-.hat:before {
+@keyframes entrance {
+    0% {
+        transform: translateY(-100px) rotate(-5deg) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0) scale(1);
+    }
+}
+
+.pi-board {
     content: '';
 
     position: absolute;
     top: Calc(1 * var(--adjusted-size));
     left: Calc(0.5 * var(--adjusted-size));
-    width: Calc(100 * var(--adjusted-size));
+    width: Calc(102 * var(--adjusted-size));
     height: Calc(70 * var(--adjusted-size));
 
-    background-image: url('/images/raspberry-pi-4-model-b.svg');
-    background-size: Calc(102 * var(--adjusted-size)) auto;
+    filter: sepia(1) contrast(0.2) brightness(1.4);
 
-    opacity: 0.5;
-
-    z-index: -2;
+    /* z-index: -2; */
 }
 
 .hat-inner {
-    /* border-rightCalc(: 7 * var(--adjusted-size)) solid #EDE6E4;
-    outlineCalc(: 1 * var(--adjusted-size)) solid #EDE6E4; */
-
     padding-top: Calc(1 * var(--adjusted-size));
     padding-right: Calc(7 * var(--adjusted-size));
     padding-bottom: Calc(1 * var(--adjusted-size));
     padding-left: Calc(1 * var(--adjusted-size));
 
     background-color: var(--secondary-light-color);
-    border-radius: Calc(0.1 * var(--adjusted-size));
+    border-radius: Calc(0.3 * var(--adjusted-size));
 
     position: relative;
+    z-index: 2;
 }
 
 .refreshing {

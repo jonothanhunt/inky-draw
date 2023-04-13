@@ -2,8 +2,8 @@
   --pi-board-top: #74a892;
   --pi-board-sides: #5e8876;
 
-  --primary-color: #271300;
-  --primary-light-color: #472300;
+  --primary-color: #2c1500;
+  --primary-light-color: #8a4d11;
   --secondary-color: #E1D0C1;
   --secondary-light-color: #EDE6E4;
 
@@ -25,6 +25,11 @@ body {
   padding: 0;
 
   background-color: var(--secondary-color);
+  background-image: linear-gradient(var(--secondary-color) 2px, transparent 2px), linear-gradient(90deg, var(--secondary-color) 2px, transparent 2px), linear-gradient(var(--secondary-color) 1px, transparent 1px), linear-gradient(90deg, var(--secondary-color) 1px, var(--secondary-light-color) 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
 
   font-family: Menlo, Consolas, "Ubuntu Mono", "Roboto Mono", "DejaVu Sans Mono", monospace;
+
+  overscroll-behavior: none;
 }
