@@ -1,6 +1,18 @@
-from flask import Flask, jsonify, request
-from inky.auto import auto
-from PIL import Image
+try:
+    from flask import Flask, jsonify, request
+except ImportError:
+    exit("This script requires the flask module\nInstall with: pip install flask")
+
+try:
+    from inky.auto import auto
+except ImportError:
+    exit("This script requires the Inky library\nInstall with: curl https://get.pimoroni.com/inky | bash")
+
+try:
+    from PIL import Image
+except ImportError:
+    exit("This script requires the Pillow library\nInstall with: pip install pillow")
+
 import base64
 
 display = auto()
