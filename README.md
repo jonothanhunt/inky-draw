@@ -2,7 +2,7 @@
 
 ![Sreenshot of jonothan.dev](/inky_draw.webp)
 
-A fun drawing app project for the Raspberry Pi and Inky pHAT using Python Flask and React.
+A fun drawing app project for the [Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) and [Inky pHAT](https://shop.pimoroni.com/products/inky-phat) using Python [Flask](https://flask.palletsprojects.com/en/2.2.x/) and [React](https://react.dev/).
 
 Select a colour (your Inky's special colour should appear if it has one) and draw with your mouse, then send it to your Inky!
 
@@ -81,3 +81,5 @@ https://user-images.githubusercontent.com/40500247/232037745-eceb1d9f-ae03-4a8b-
 ## Contribute
 This is fun! 
 And if you think you can make it more fun, more accessible, easier to use, or find a bug— feel free to contribute!
+
+Some of the libraries (especially Python ones) are new to me, so no doubt there are efficiencies to be gained!
