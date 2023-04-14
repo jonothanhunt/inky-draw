@@ -68,3 +68,16 @@ The app should not be running at `localhost:5173` and can be opened in your brow
 ## Have fun!
 
 https://user-images.githubusercontent.com/40500247/232037745-eceb1d9f-ae03-4a8b-bc82-2a1fdaa74b7b.mp4
+
+## To do
+
+- [x] Implement Inky special colours 🎉
+- [ ] Add accessible roles to canvas
+- [ ] Improve UI colour palette for clarity
+- [ ] Add more in-depth error reporting
+- [ ] Potentially break Canvas component into smaller components
+- [ ] More pens and pencils (as components)
+
+## Contribute
+This is fun! 
+And if you think you can make it more fun, more accessible, easier to use, or find a bug— feel free to contribute!
