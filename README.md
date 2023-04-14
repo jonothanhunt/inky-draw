@@ -4,11 +4,11 @@
 
 A fun project for the Raspberry Pi and Inky pHAT using Python Flask API and React app.
 
-Select a colour (including your Inky's special colour if it has one) and draw with your mouse, then send it to your Inky!
+Select a colour (your Inky's special colour should appear if it has one) and draw with your mouse, then send it to your Inky!
 
 ## Get started
 
-The first time you use Inky Draw, you'll need to install some libraries.
+The first time you use Inky Draw, you'll need to do some installs:
 
 <details>
   <summary>Click here for the initial setup</summary>
@@ -39,12 +39,6 @@ Install required packages into the environment:
 pip3 install -r ./requirements.txt
 ```
 
-Install the required packages for the React app:
-
-```bash
-yarn
-```
-
 ### React app
 
 Install the required packages for the React app:
@@ -55,9 +49,9 @@ yarn
 
 </details>
 
-## Start the Flask API and React app
+## Start
 
-Start the API
+Start the API (make sure your Inky is on your Pi)
 
 ```bash
 yarn start-api
@@ -68,6 +62,8 @@ Start the app
 ```bash
 yarn dev
 ```
+
+The app should not be running at `localhost:5173` and can be opened in your browser!
 
 ## Have fun!
 
