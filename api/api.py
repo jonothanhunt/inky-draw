@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 @app.route('/api/inky/initialise')
 def hello():
-    if(display):
+    if (display):
         return jsonify(
-            inkyDetected=True
+            inkyDetected=True,
 
             specialColor=display.colour,
             resolution=display.resolution
@@ -25,12 +25,12 @@ def hello():
 
 @app.route('/api/inky/clear')
 def clear():
-    if(display):
+    if (display):
         img = Image.new("P", (display.WIDTH, display.HEIGHT))
         display.set_image(img)
         display.show()
         return jsonify(
-            inkyDetected=True
+            inkyDetected=True,
             setToClear=True
         )
     else:
@@ -41,7 +41,7 @@ def clear():
 
 @app.route('/api/inky/set', methods=['POST'])
 def display_image():
-    if(display):
+    if (display):
         data = request.get_json()
         imageData = data['imageData']
 
@@ -62,7 +62,7 @@ def display_image():
         ])
 
         image = image.quantize(colors=3, method=None, kmeans=0,
-                            palette=palette, dither=Image.Dither.NONE)
+                               palette=palette, dither=Image.Dither.NONE)
 
         image.thumbnail((width, height))
 
@@ -74,6 +74,5 @@ def display_image():
         )
     else:
         return jsonify(
-                inkyDetected=False
+            inkyDetected=False
         )
-        
