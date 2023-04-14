@@ -15,7 +15,8 @@
   --color-4: #008585;
   --color-4-dark: #004d4d;
 
-  --adjusted-size: Min(1vw, 14px)
+  /* --adjusted-size: Min(1vw, 14px); */
+  --adjusted-size: Min(1vw, 1.2vh);
 }
 
 /*  #c7522a,  #e5c185,  #E1D0C1,  #74a892 and  #008585. */

@@ -19,7 +19,7 @@
 .header-info {
     margin-bottom: 20px;
     max-width: 400px;
-    height: 80px;
+    height: 40px;
 }
 
 /* controls */
@@ -41,9 +41,16 @@
     display: flex;
     gap: 20px;
     flex-basis: auto;
-    overflow-x: scroll;
+
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     z-index: 2;
+}
+
+controls::-webkit-scrollbar {
+    display: none;
 }
 
 .controls-button {
@@ -276,7 +283,8 @@ input[type="radio"]:checked {
 
     filter: sepia(1) contrast(0.2) brightness(1.4);
 
-    /* z-index: -2; */
+    pointer-events: none;
+    user-select: none;
 }
 
 .hat-inner {

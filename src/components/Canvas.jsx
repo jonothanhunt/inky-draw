@@ -15,7 +15,7 @@ const Canvas = () =>
     });
 
     // Inky special colour state
-    const [specialColour, setSpecialColour] = useState(null)
+    const [specialColor, setSpecialColor] = useState(null)
 
     // Get and save resolution and special colour (to then make sure that if it is a special colour, that colour is available for drawing with)
     useEffect(() =>
@@ -33,7 +33,7 @@ const Canvas = () =>
                 width: data.resolution[0],
                 height: data.resolution[1]
             })
-            setSpecialColour(data.specialColor)
+            setSpecialColor(data.specialColor)
         }).catch(error =>
         {
             setInkyConnectionError(true)

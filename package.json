@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "install-api": "cd api && source venv/bin/activate && pip install -r requirements.txt",
     "start-api": "cd api && venv/bin/flask run --no-debugger",
     "dev": "vite",
     "build": "vite build",
