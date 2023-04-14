@@ -4,11 +4,7 @@ import piImage from '/images/raspberry-pi-4-model-b.svg'
 
 import { useOnDraw } from "./DrawingHooks"
 
-const Canvas = ({
-    width,
-    height,
-    specialColor
-}) =>
+const Canvas = () =>
 {
     // SET THINGS UP
 
@@ -104,16 +100,13 @@ const Canvas = ({
     useEffect(() =>
     {
         const context = canvasRef.current.getContext('2d')
+
         const color = colourTable[currentColor]
         context.strokeStyle = color;
         context.fillStyle = color;
-    }, [currentColor])
 
-    useEffect(() =>
-    {
-        const context = canvasRef.current.getContext('2d')
         context.lineWidth = brushSize;
-    }, [brushSize])
+    }, [currentColor, brushSize])
 
 
     // CANVAS CONTROL
